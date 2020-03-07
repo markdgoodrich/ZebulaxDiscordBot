@@ -1,0 +1,4 @@
+catchPhrases = [
+ 'ARCHIBALD',
+ 'ARCHIE'
+ ]
