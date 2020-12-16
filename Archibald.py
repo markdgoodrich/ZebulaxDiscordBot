@@ -59,14 +59,23 @@ async def on_message(message):
         bde_response = "In my experiences as an Archivist, %s is approximately %d%% 'Big Dick Energy', as you say." %(bde_item[4:], random.randint(0, 100))
         await message.channel.send(bde_response)
 
+
+  elif message_upper.startswith('XYZ'):
+        await message.channel.send('How far up (vertically) is the target?')
+        height = await client.wait_for("message")
+        await message.channel.send('How far away (horizontally) is the target?')
+        distance = await client.wait_for("message")
+        hypotenuse = math.sqrt(int(height.content)**2 + int(distance.content)**2)
+        hypnotenuse_answer = 'The target is %d feet away.' %hypotenuse
+        await message.channel.send(hypnotenuse_answer)
+
     elif 'ANIME' in message_upper:
         anime_response = "Uhg, please remove that swill from the library."
         await message.channel.send(anime_response)
 
     elif 'AUTOGNOME MALFUNCTION' in message_upper:
         #autoGnome_malfunction()
-        await message.channel.send(autoGnome_malfunction())
-        
+        await message.channel.send(autoGnome_malfunction())        
         
     if message_upper.endswith('?') and any(x in message_upper for x in catchPhrases):
         answer = random.choice(archibaldAnswers)
