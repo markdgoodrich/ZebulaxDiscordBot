@@ -61,13 +61,12 @@ async def on_message(message):
 
 
   elif message_upper.startswith('XYZ'):
-        await message.channel.send('How far up (vertically) is the target?')
-        height = await client.wait_for("message")
-        await message.channel.send('How far away (horizontally) is the target?')
-        distance = await client.wait_for("message")
-        hypotenuse = math.sqrt(int(height.content)**2 + int(distance.content)**2)
+        numbers = message.content.replace('XYZ ','')
+        height,distance = numbers.split(',')
+        hypotenuse = math.sqrt(int(height)**2 + int(distance)**2)
         hypnotenuse_answer = 'The target is %d feet away.' %hypotenuse
         await message.channel.send(hypnotenuse_answer)
+        
 
     elif 'ANIME' in message_upper:
         anime_response = "Uhg, please remove that swill from the library."
